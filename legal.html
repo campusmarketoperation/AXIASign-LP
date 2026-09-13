@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>利用規約・プライバシーポリシー — AXIA Sign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#03070f;
+  --s1:#070d1a;
+  --s2:#0b1425;
+  --s3:#0f1c32;
+  --blue:#3b6cf4;
+  --blue2:#6089f8;
+  --blue3:#8faafc;
+  --glow:rgba(59,108,244,0.2);
+  --white:#eef2ff;
+  --text:#8ba4cc;
+  --muted:#3d5270;
+  --border:rgba(59,108,244,0.1);
+  --border2:rgba(59,108,244,0.2);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter','Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.85;font-size:15px;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;padding:0 4rem;height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+nav::before{content:'';position:absolute;inset:0;background:rgba(3,7,15,0.85);backdrop-filter:blur(20px);z-index:-1;}
+.nav-logo{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--white);display:flex;align-items:center;gap:8px;text-decoration:none;}
+.nav-dot{width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue);}
+.nav-back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;font-weight:500;}
+.nav-back:hover{color:var(--white);}
+
+/* CONTAINER */
+.container{max-width:800px;margin:0 auto;padding:64px 2rem 120px;}
+
+/* TABS */
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border2);border:1px solid var(--border2);border-radius:10px;overflow:hidden;margin-bottom:3.5rem;}
+.tab{padding:14px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;border:none;background:var(--s1);color:var(--muted);transition:all 0.2s;letter-spacing:0.04em;}
+.tab.active{background:var(--blue);color:#fff;}
+.tab:hover:not(.active){background:var(--s2);color:var(--text);}
+
+.section{display:none;}
+.section.active{display:block;}
+
+/* DOC HEADER */
+.doc-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
+.doc-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.2em;color:var(--blue2);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.doc-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--blue2);}
+.doc-title{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.02em;color:var(--white);margin-bottom:10px;}
+.doc-meta{font-size:12px;color:var(--muted);letter-spacing:0.04em;}
+
+/* TOC */
+.toc{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-bottom:3rem;}
+.toc-title{font-size:10px;font-weight:700;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:14px;}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.toc-list a{font-size:13px;color:var(--blue2);text-decoration:none;transition:color 0.2s;display:flex;align-items:center;gap:8px;}
+.toc-list a::before{content:'';display:block;width:12px;height:1px;background:var(--blue);flex-shrink:0;}
+.toc-list a:hover{color:var(--white);}
+
+/* ARTICLE */
+.article{display:flex;flex-direction:column;gap:0;}
+.clause{padding:2.5rem 0;border-bottom:1px solid var(--border);scroll-margin-top:80px;}
+.clause:last-child{border-bottom:none;}
+.clause-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;letter-spacing:-0.01em;color:var(--white);margin-bottom:1.25rem;display:flex;align-items:center;gap:12px;}
+.clause-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:rgba(59,108,244,0.15);border:1px solid var(--border2);border-radius:6px;font-size:12px;font-weight:700;color:var(--blue2);flex-shrink:0;font-family:'Inter',sans-serif;}
+.clause p{color:var(--text);line-height:1.9;margin-bottom:10px;}
+.clause p:last-child{margin-bottom:0;}
+.clause ul,.clause ol{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px;}
+.clause li{color:var(--text);font-size:14px;line-height:1.8;padding-left:1.25rem;position:relative;}
+.clause li::before{content:'—';position:absolute;left:0;color:var(--blue2);font-weight:600;}
+.clause-sub{font-size:12px;font-weight:700;letter-spacing:0.12em;color:var(--blue2);text-transform:uppercase;margin:20px 0 10px;display:flex;align-items:center;gap:8px;}
+.clause-sub::before{content:'';display:block;width:16px;height:1px;background:var(--blue);}
+
+/* HIGHLIGHT */
+.highlight{background:rgba(59,108,244,0.08);border:1px solid var(--border2);border-radius:8px;padding:1rem 1.25rem;font-size:14px;color:var(--blue3);margin-bottom:14px;line-height:1.8;}
+
+/* CONTACT BOX */
+.contact-box{background:var(--s2);border:1px solid var(--border2);border-radius:10px;padding:1.5rem;margin-top:1rem;}
+.contact-box p{font-size:14px;color:var(--text);margin-bottom:6px;line-height:1.7;}
+.contact-box p:last-child{margin-bottom:0;}
+.contact-box strong{color:var(--white);}
+.contact-note{font-size:12px;color:var(--muted);margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.foot-logo{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.foot-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);opacity:0.5;}
+footer p{font-size:12px;color:var(--muted);letter-spacing:0.04em;}
+
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}
+  .container{padding:48px 1.25rem 80px;}
+  footer{padding:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo"><div class="nav-dot"></div>AXIA Sign</a>
+  <a href="javascript:history.back()" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    戻る
+  </a>
+</nav>
+
+<div class="container">
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('tos')">利用規約</button>
+    <button class="tab" onclick="switchTab('pp')">プライバシーポリシー</button>
+  </div>
+
+  <!-- 利用規約 -->
+  <div class="section active" id="tos">
+    <div class="doc-header">
+      <div class="doc-eyebrow">Terms of Service</div>
+      <div class="doc-title">利用規約</div>
+      <div class="doc-meta">制定日：2026年7月1日　／　運営：AXIA（谷屋海斗）</div>
+    </div>
+
+    <div class="toc">
+      <div class="toc-title">目次</div>
+      <ul class="toc-list">
+        <li><a href="#tos-1">第1条 適用</a></li>
+        <li><a href="#tos-2">第2条 定義</a></li>
+        <li><a href="#tos-3">第3条 アカウントの管理</a></li>
+        <li><a href="#tos-4">第4条 料金・支払い</a></li>
+        <li><a href="#tos-5">第5条 禁止事項</a></li>
+        <li><a href="#tos-6">第6条 サービスの停止・変更</a></li>
+        <li><a href="#tos-7">第7条 免責事項</a></li>
+        <li><a href="#tos-8">第8条 データの取り扱い</a></li>
+        <li><a href="#tos-9">第9条 解約</a></li>
+        <li><a href="#tos-10">第10条 準拠法・管轄裁判所</a></li>
+      </ul>
+    </div>
+
+    <div class="article">
+      <div class="clause" id="tos-1">
+        <div class="clause-title"><span class="clause-num">1</span>適用</div>
+        <p>本利用規約（以下「本規約」）は、AXIA（以下「当社」）が提供する現場電子伝票サービス「AXIA Sign」（以下「本サービス」）の利用に関する条件を定めるものです。</p>
+        <p>本サービスを利用することにより、利用者は本規約に同意したものとみなします。</p>
+      </div>
+
+      <div class="clause" id="tos-2">
+        <div class="clause-title"><span class="clause-num">2</span>定義</div>
+        <ul>
+          <li>「利用者」とは、本サービスを利用する法人または個人事業主をいいます。</li>
+          <li>「管理者」とは、利用者を代表してアカウントを管理する担当者をいいます。</li>
+          <li>「伝票データ」とは、本サービスを通じて作成・保存される作業報告書および電子署名データをいいます。</li>
+        </ul>
+      </div>
+
+      <div class="clause" id="tos-3">
+        <div class="clause-title"><span class="clause-num">3</span>アカウントの管理</div>
+        <p>利用者は、当社から付与されたログインIDおよびパスワードを自己の責任において管理するものとします。</p>
+        <ul>
+          <li>第三者へのアカウント情報の開示・貸与・譲渡は禁止します。</li>
+          <li>アカウント情報の漏洩が発生した場合は、直ちに当社へ連絡してください。</li>
+          <li>第三者による不正利用により生じた損害について、当社は責任を負いません。</li>
+        </ul>
+      </div>
+
+      <div class="clause" id="tos-4">
+        <div class="clause-title"><span class="clause-num">4</span>料金・支払い</div>
+        <div class="clause-sub">初期費用</div>
+        <p>サービス開始時に、契約プランに応じた初期構築費用をお支払いいただきます。初期費用は原則として返金いたしません。</p>
+        <div class="clause-sub">月額費用</div>
+        <p>毎月末日締め、翌月末日払いを基本とします。支払い方法は銀行振込とします。</p>
+        <div class="clause-sub">遅延損害金</div>
+        <p>支払いが遅延した場合、年率14.6%の遅延損害金が発生する場合があります。</p>
+        <div class="clause-sub">料金の変更</div>
+        <p>料金を変更する場合は、変更の1ヶ月前までに利用者へ通知します。</p>
+      </div>
+
+      <div class="clause" id="tos-5">
+        <div class="clause-title"><span class="clause-num">5</span>禁止事項</div>
+        <p>利用者は以下の行為を行ってはなりません。</p>
+        <ul>
+          <li>本サービスを用いた虚偽の伝票・署名の作成</li>
+          <li>第三者の権利を侵害する行為</li>
+          <li>本サービスのリバースエンジニアリング・改ざん</li>
+          <li>当社の許可なく本サービスを第三者へ転売・再提供する行為</li>
+          <li>サーバーに過大な負荷をかける行為</li>
+          <li>その他、当社が不適切と判断する行為</li>
+        </ul>
+      </div>
+
+      <div class="clause" id="tos-6">
+        <div class="clause-title"><span class="clause-num">6</span>サービスの停止・変更</div>
+        <p>当社は以下の場合、事前通知なくサービスを停止・変更することがあります。</p>
+        <ul>
+          <li>システムのメンテナンス・障害対応</li>
+          <li>天災・停電などの不可抗力</li>
+          <li>利用者が本規約に違反した場合</li>
+        </ul>
+        <p>サービス停止により生じた損害について、当社は故意または重大な過失がある場合を除き、責任を負いません。</p>
+      </div>
+
+      <div class="clause" id="tos-7">
+        <div class="clause-title"><span class="clause-num">7</span>免責事項</div>
+        <div class="highlight">本サービスは現状有姿で提供されます。当社は、本サービスが特定の目的に適合すること、期待する機能・商品的価値を有することを保証しません。</div>
+        <p>当社が利用者に対して負う損害賠償責任は、損害発生月の月額利用料を上限とします。</p>
+      </div>
+
+      <div class="clause" id="tos-8">
+        <div class="clause-title"><span class="clause-num">8</span>データの取り扱い</div>
+        <p>利用者の伝票データは、サービス提供のためにのみ使用します。第三者への提供・販売は行いません。</p>
+        <p>解約後のデータ保持期間は30日間とします。期間経過後にデータは削除されます。必要な場合は解約前にエクスポートしてください。</p>
+      </div>
+
+      <div class="clause" id="tos-9">
+        <div class="clause-title"><span class="clause-num">9</span>解約</div>
+        <p>解約を希望する場合は、解約希望月の前月末日までに当社へ書面またはメールにてお申し出ください。</p>
+        <p>解約月の日割り精算は行わず、月末まで利用可能です。</p>
+      </div>
+
+      <div class="clause" id="tos-10">
+        <div class="clause-title"><span class="clause-num">10</span>準拠法・管轄裁判所</div>
+        <p>本規約は日本法に準拠します。本サービスに関する紛争については、大阪地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- プライバシーポリシー -->
+  <div class="section" id="pp">
+    <div class="doc-header">
+      <div class="doc-eyebrow">Privacy Policy</div>
+      <div class="doc-title">プライバシーポリシー</div>
+      <div class="doc-meta">制定日：2026年7月1日　／　運営：AXIA（谷屋海斗）</div>
+    </div>
+
+    <div class="toc">
+      <div class="toc-title">目次</div>
+      <ul class="toc-list">
+        <li><a href="#pp-1">第1条 収集する情報</a></li>
+        <li><a href="#pp-2">第2条 利用目的</a></li>
+        <li><a href="#pp-3">第3条 第三者提供</a></li>
+        <li><a href="#pp-4">第4条 委託先</a></li>
+        <li><a href="#pp-5">第5条 データの保管・セキュリティ</a></li>
+        <li><a href="#pp-6">第6条 Cookieの利用</a></li>
+        <li><a href="#pp-7">第7条 開示・訂正・削除</a></li>
+        <li><a href="#pp-8">第8条 お問い合わせ</a></li>
+      </ul>
+    </div>
+
+    <div class="article">
+      <div class="clause" id="pp-1">
+        <div class="clause-title"><span class="clause-num">1</span>収集する情報</div>
+        <div class="clause-sub">利用者から直接収集する情報</div>
+        <ul>
+          <li>会社名・担当者名・メールアドレス（アカウント登録時）</li>
+          <li>作業現場名・作業時間・スタッフ名（伝票作成時）</li>
+          <li>電子署名データ（お客様サイン）</li>
+          <li>会社ロゴ画像</li>
+        </ul>
+        <div class="clause-sub">自動的に収集する情報</div>
+        <ul>
+          <li>ログイン日時・操作ログ</li>
+          <li>IPアドレス・ブラウザ情報</li>
+        </ul>
+      </div>
+
+      <div class="clause" id="pp-2">
+        <div class="clause-title"><span class="clause-num">2</span>利用目的</div>
+        <ul>
+          <li>本サービスの提供・運営・改善</li>
+          <li>お客様へのPDF伝票のメール送信</li>
+          <li>ご請求・お支払い管理</li>
+          <li>サポート対応・お問い合わせへの回答</li>
+          <li>不正利用の検知・防止</li>
+          <li>サービスに関する重要なお知らせの送信</li>
+        </ul>
+      </div>
+
+      <div class="clause" id="pp-3">
+        <div class="clause-title"><span class="clause-num">3</span>第三者提供</div>
+        <div class="highlight">当社は、以下の場合を除き、利用者の個人情報を第三者に提供しません。</div>
+        <ul>
+          <li>利用者本人の同意がある場合</li>
+          <li>法令に基づく場合（裁判所・警察等からの要請）</li>
+          <li>人の生命・身体・財産の保護のために必要な場合</li>
+        </ul>
+      </div>
+
+      <div class="clause" id="pp-4">
+        <div class="clause-title"><span class="clause-num">4</span>委託先（利用しているサービス）</div>
+        <p>当社は以下のサービスにデータを委託しています。各社のプライバシーポリシーに従ってデータが管理されます。</p>
+        <ul>
+          <li><strong style="color:var(--white);">Supabase, Inc.</strong>（データベース・認証）— supabase.com</li>
+          <li><strong style="color:var(--white);">Vercel, Inc.</strong>（ホスティング）— vercel.com</li>
+          <li><strong style="color:var(--white);">Resend, Inc.</strong>（メール送信）— resend.com</li>
+        </ul>
+      </div>
+
+      <div class="clause" id="pp-5">
+        <div class="clause-title"><span class="clause-num">5</span>データの保管・セキュリティ</div>
+        <ul>
+          <li>すべての通信はSSL/TLS暗号化により保護されます。</li>
+          <li>データベースはRow Level Security（行単位のアクセス制御）により、他社のデータへのアクセスを防止しています。</li>
+          <li>データは自動バックアップされ、障害時の復元が可能です。</li>
+          <li>解約後30日を経過したデータは削除されます。</li>
+        </ul>
+      </div>
+
+      <div class="clause" id="pp-6">
+        <div class="clause-title"><span class="clause-num">6</span>Cookieの利用</div>
+        <p>本サービスはログイン状態の維持のためにlocalStorageおよびsessionStorageを使用します。これらはサービスの提供に必要なものであり、広告目的では使用しません。</p>
+      </div>
+
+      <div class="clause" id="pp-7">
+        <div class="clause-title"><span class="clause-num">7</span>開示・訂正・削除</div>
+        <p>利用者は、自己の個人情報の開示・訂正・削除を求めることができます。以下のお問い合わせ先までご連絡ください。合理的な期間内に対応いたします。</p>
+      </div>
+
+      <div class="clause" id="pp-8">
+        <div class="clause-title"><span class="clause-num">8</span>お問い合わせ</div>
+        <div class="contact-box">
+          <p><strong>運営者：</strong>AXIA（谷屋海斗）</p>
+          <p><strong>所在地：</strong>大阪府</p>
+          <p><strong>メール：</strong>（運営メールアドレスを記入）</p>
+          <p class="contact-note">お問い合わせへは、原則3営業日以内に返信いたします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="foot-logo"><div class="foot-dot"></div>AXIA Sign</div>
+  <p>© 2026 AXIA — 谷屋海斗</p>
+</footer>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach((t, i) => {
+    t.classList.toggle('active', (i===0&&name==='tos')||(i===1&&name==='pp'));
+  });
+  document.querySelectorAll('.section').forEach(s => {
+    s.classList.toggle('active', s.id===name);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
